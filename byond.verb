@@ -1,0 +1,23 @@
+w_metadata byond apps \
+    title="BYOND" \
+    publisher="www.byond.com" \
+    year="1994" \
+    media="download" \
+    file1="515.1646_byond.exe" \
+    installed_exe1="$W_PROGRAMS_X86_WIN/BYOND/bin/byond.exe"
+
+load_byond()
+{
+    w_call dxtrans
+    w_call dxvk
+    w_call ie8
+    w_call ie8_kb2936068
+    w_call vcrun2022
+
+    w_download https://www.byond.com/download/build/515/515.1646_byond.exe ac1015d2ba7c011020874a3afbf2eeeb4582298a2940bb4274a1a7ffd00e4e5c
+    w_try_cd "${W_CACHE}/${W_PACKAGE}"
+    
+    "${WINE}" 515.1646_byond.exe ${W_OPT_UNATTENDED:+ /S}
+
+    w_verify_sha256sum "$W_PROGRAMS_X86_UNIX/BYOND/bin/byond.exe" 4d1987b4a2388368a7c49c781aa68f175f1721336f3a786d9ea65189a67d90c7
+}

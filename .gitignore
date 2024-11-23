@@ -1,0 +1,9 @@
+.wine32
+bin
+byond
+help
+
+*.zip
+*.exe
+*.desktop
+*.ico
